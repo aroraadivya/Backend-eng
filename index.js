@@ -9,7 +9,11 @@
 
 const fs=require("fs");
 console.log("1");
-const result=fs.readFileSync("read.txt", "utf-8");
-console.log(result);
+// const result=fs.readFileSync("read.txt", "utf-8");
+// console.log(result);
 
+fs.readFile("read.txt", "utf-8", (err, data)=>{
+    // if(err) throw err;
+    console.log(data);
+});
 console.log("2");
