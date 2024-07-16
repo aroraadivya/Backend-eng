@@ -42,7 +42,7 @@
 const http = require("http");
 const fs = require("fs");
 myserver = http.createServer((req, res) => {
-    const log=${Date.now()}:${req.url}\n;
+    const log=`${Date.now()}:${req.url}\n`;
   if (req.url == "/") {
     fs.appendFile("serverLogs.txt", log, (err) => {
       res.end("Home page");
