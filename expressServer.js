@@ -1,6 +1,6 @@
 const express = require("express");
 const users = require("./mock_data.json");
-
+const fs=require("fs");
 const app = express();
 const port = 7000;
 
@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 app.post("/api/users",(req,res)=>{
   const body=req.body;
   users.push({...body,id:users.length+1});
-  fs.writeFile("./mocak_data.json",JSON.stringify(users),(err,data)=>{
+  fs.writeFile("./mock_data.json",JSON.stringify(users),(err,data)=>{
     return res.json({message:"User added successfully"})
 })
 });
