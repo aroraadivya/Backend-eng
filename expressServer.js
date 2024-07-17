@@ -50,4 +50,15 @@ app.patch("/api/users/:id",(req,res)=>{
 }
 });
 
+app.delete("/api/users/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const userIndex = users.findIndex((user) => user.id === id);
+  if (userIndex !== -1) {
+    users.splice(userIndex, 1);
+    fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (err, data) => {
+      return res.json({ message: "User deleted successfully" });
+ });
+}
+});
+
 app.listen(port, () => console.log(`server started at ${port}`));
