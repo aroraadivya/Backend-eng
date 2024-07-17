@@ -27,4 +27,14 @@ app.use(express.urlencoded({ extended: false }));
 //     <ul>`;
 //     res.send(html)
 //   })
-// app.listen(port, () => console.log(`server started at ${port}`));
+
+
+app.post("/api/users",(req,res)=>{
+  const body=req.body;
+  users.push({...body,id:users.length+1});
+  fs.writeFile("./mocak_data.json",JSON.stringify(users),(err,data)=>{
+    return res.json({message:"User added successfully"})
+})
+});
+
+app.listen(port, () => console.log(`server started at ${port}`));
