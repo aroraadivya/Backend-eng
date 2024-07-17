@@ -17,11 +17,14 @@ app.use(express.urlencoded({ extended: false }));
 //   }
 //   return res.status(404).json({ error: "User not found" });
 // });
-app.get("/users",(req,res)=>{
-    const html=`
-    <ul>
-    ${users.map(user=>`<li>${user.first_name}</li>`)}
-    <ul>`;
-    res.send(html)
-  })
-app.listen(port, () => console.log(`server started at ${port}`));
+
+
+
+// app.get("/users",(req,res)=>{
+//     const html=`
+//     <ul>
+//     ${users.map(user=>`<li>${user.first_name}</li>`)}
+//     <ul>`;
+//     res.send(html)
+//   })
+// app.listen(port, () => console.log(`server started at ${port}`));
