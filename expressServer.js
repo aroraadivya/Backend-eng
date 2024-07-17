@@ -37,4 +37,17 @@ app.post("/api/users",(req,res)=>{
 })
 });
 
+app.patch("/api/users",(req,res)=>{
+  const id= Number(req.params.id);
+  const body=req.body;
+  const user=users.find(user=>user.id===id);
+
+  if(user){
+    Object.assign(user,body);
+    fs.writeFile("./mock_data.json",JSON.stringify(users),(err,data)=>{
+      return res.json({message:"User updated successfully"})
+  });
+}
+});
+
 app.listen(port, () => console.log(`server started at ${port}`));
