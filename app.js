@@ -19,7 +19,7 @@ app.set('view engine', 'ejs')
 
 const user = {
     firstName: 'Divya',
-    lastName: 'Arora',
+    lastName: 'Arora'
 }
 app.get('/', (req, res) => {
     res.render('pages/index', {
