@@ -26,15 +26,39 @@
 // app.listen(3000)
 
 
+// const express = require('express')
+//     const app = express()
+
+// app.use(function(req,res,next){
+//     console.log("new req rec"+Date());
+// });
+
+// app.get('/users', (req, res, next) => {
+//     res.send('USER')
+//   })
+// app.listen(3000)
+
+
 const express = require('express')
-    const app = express()
+const app = express()
+const router = express.Router()
 
-app.use(function(req,res,next){
-    console.log("new req rec"+Date());
-});
+router.use((req, res, next) => {
+  console.log('Time:', Date.now())
+  next()
+})
 
-app.get('/users', (req, res, next) => {
-    res.send('USER')
-  })
+
+router.use('/user/:id', (req, res, next) => {
+  console.log('Request URL:', req.originalUrl)
+  next()
+}, (req, res, next) => {
+  console.log('Request Type:', req.method)
+  next()
+})
+
+app.use('/', router)
+
 app.listen(3000)
+
 
